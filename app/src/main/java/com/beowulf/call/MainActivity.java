@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.beowulfwebrtc.API.TestPush;
 import com.example.beowulfwebrtc.API.startWithIdentifier;
 import com.example.beowulfwebrtc.LogUtil;
 import com.example.beowulfwebrtc.SDKApplication;
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements  BWF_CMM_Protocol
             @Override
             public void onClick(View view) {
                 String callId = edtCall.getText().toString();
-                BWF_CMM_CallManager.getInstance().voiceCallTo(callId);
+                BWF_CMM_CallManager.getInstance().voiceCallTo(callId, "Cậu vàng");
 
             }
         });
@@ -111,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements  BWF_CMM_Protocol
         tvCallId.setText("Start Id "+ idCall);
 
         progressBar.setVisibility(View.INVISIBLE);
-        btnCall.setVisibility(View.VISIBLE);
+       // btnCall.setVisibility(View.VISIBLE);
 
         Log.d("bwf_cmm_didStartWithIdentifier    ",  s );
 
@@ -135,9 +134,9 @@ public class MainActivity extends AppCompatActivity implements  BWF_CMM_Protocol
     @Override
     public void bwf_cmm_generatePushContent(String s, String s1, BWF_CMM_MessageDef.bwf_cmm_push_content_type bwf_cmm_push_content_type) {
 
-        TestPush note8 =
-                new TestPush(
-                        "dGCPbB0vI-I:APA91bHyFb3CSEXn2rPM7RkCMxzHysxj9jT8IyKS5oaE-7dl5zLV9JW4hJJyqPzjFGPHUTjV7E2aiKpgMD5qzeFF16iirQCxdy8mLlsTz0ZUpUoCkaRlzhIbghgBzSExNrF_HnVDebKD"
+        TestPushApp note8 =
+                new TestPushApp(
+                        "f4Mn_4V5xwM:APA91bGQh3gLJVBBws0LM-bMNhA8rwwLG7zNiY92P8PWLet_5EyEyXylh7Gbe6LkrDKrssqkAi5OmNoaVhb91NSBekQiSj_aeXCrR4MbVLDuStYAEMiHQEDYsHvotuV_SBusNzX9Yt89"
                         , s
                         , s1);// to make a call to sam sung note 8
         note8.Execute();
