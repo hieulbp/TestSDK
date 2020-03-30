@@ -115,7 +115,12 @@ public class MyFirebaseMessagingService   extends FirebaseMessagingService  impl
     @Override
     public void bwf_cmm_Calling_CallDidChangeToStateReceivedIncomingCallFrom(String s, boolean b) {
 
-        BWF_CMM_CallManager.LauchIncommingCall();
+    }
+
+    @Override
+    public void bwf_cmm_Calling_CallDidChangeToStateReceivedIncomingCallFrom(String s, boolean b, String s1) {
+        BWF_CMM_CallManager.LauchIncommingCall(s1);
+
     }
 
     @Override

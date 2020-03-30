@@ -25,7 +25,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
-public class MainActivity extends AppCompatActivity implements  BWF_CMM_Protocol, LogUtil.LoggingDisplay {
+
+public class MainActivity extends AppCompatActivity implements BWF_CMM_Protocol, LogUtil.LoggingDisplay {
 
     Button btnStarFrameWork, btnCall;
     EditText edtId, edtCall;
@@ -107,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements  BWF_CMM_Protocol
 
     @Override
     public void bwf_cmm_didStartWithIdentifier(String s) {
+        BWF_CMM_CallManager.setTimeout(20000);
         tvCallId.setText("Start Id "+ idCall);
 
         progressBar.setVisibility(View.INVISIBLE);
@@ -136,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements  BWF_CMM_Protocol
 
         TestPushApp note8 =
                 new TestPushApp(
-                        "f4Mn_4V5xwM:APA91bGQh3gLJVBBws0LM-bMNhA8rwwLG7zNiY92P8PWLet_5EyEyXylh7Gbe6LkrDKrssqkAi5OmNoaVhb91NSBekQiSj_aeXCrR4MbVLDuStYAEMiHQEDYsHvotuV_SBusNzX9Yt89"
+                        ""
                         , s
                         , s1);// to make a call to sam sung note 8
         note8.Execute();
@@ -153,7 +155,12 @@ public class MainActivity extends AppCompatActivity implements  BWF_CMM_Protocol
 
     @Override
     public void bwf_cmm_Calling_CallDidChangeToStateReceivedIncomingCallFrom(String s, boolean b) {
-        BWF_CMM_CallManager.LauchIncommingCall();
+    }
+
+    @Override
+    public void bwf_cmm_Calling_CallDidChangeToStateReceivedIncomingCallFrom(String s, boolean b, String s1) {
+        BWF_CMM_CallManager.LauchIncommingCall(s1);
+
     }
 
     @Override
