@@ -1,7 +1,9 @@
 package com.beowulf.call;
 
+import android.content.Context;
 import android.provider.Settings;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.beowulfwebrtc.LogUtil;
 import com.example.beowulfwebrtc.SDKApplication;
@@ -21,8 +23,12 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class MyFirebaseMessagingService   extends FirebaseMessagingService  implements BWF_CMM_Protocol {
+    private Context context;
+    MyFirebaseMessagingService myFirebaseMessagingService;
     public MyFirebaseMessagingService() {
-//        BWF_CMM_Protocol_deligate.AddListener(this);
+
+        myFirebaseMessagingService = this;
+        BWF_CMM_Protocol_deligate.AddListener(this);
     }
 
     @Override
@@ -30,13 +36,15 @@ public class MyFirebaseMessagingService   extends FirebaseMessagingService  impl
         super.onMessageReceived(message);
 
 
-        BWF_CMM_Protocol_deligate.AddListener(this);
+//        BWF_CMM_Protocol_deligate.AddListener(this);
 
         String body = message.getData().get("body");
 
         Log.d("FIREBASE_BODY", "body-----" + body);
 
         BWF_CMM_Protocol_deligate.nofityOnReceivePushContent(body);
+
+//        Toast.makeText(MyFirebaseMessagingService.this, body, Toast.LENGTH_LONG).show();
 
 
     }
@@ -145,10 +153,7 @@ public class MyFirebaseMessagingService   extends FirebaseMessagingService  impl
 
     }
 
-    @Override
-    public void bwf_cmm_generatePushContent(String s, String s1) {
 
-    }
 
     @Override
     public void onDestroy() {

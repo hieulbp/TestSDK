@@ -1,6 +1,5 @@
 package com.beowulf.call;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +11,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.beowulfwebrtc.API.startWithIdentifier;
 import com.example.beowulfwebrtc.LogUtil;
@@ -80,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements BWF_CMM_Protocol,
             @Override
             public void onClick(View view) {
                 String callId = edtCall.getText().toString();
-                BWF_CMM_CallManager.getInstance().voiceCallTo(callId, "Cậu vàng");
+                BWF_CMM_CallManager.getInstance().voiceCallTo(callId);
 
             }
         });
@@ -108,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements BWF_CMM_Protocol,
 
     @Override
     public void bwf_cmm_didStartWithIdentifier(String s) {
-        BWF_CMM_CallManager.setTimeout(20000);
+        BWF_CMM_CallManager.setTimeout(200000);
         tvCallId.setText("Start Id "+ idCall);
 
         progressBar.setVisibility(View.INVISIBLE);
@@ -136,14 +138,27 @@ public class MainActivity extends AppCompatActivity implements BWF_CMM_Protocol,
     @Override
     public void bwf_cmm_generatePushContent(String s, String s1, BWF_CMM_MessageDef.bwf_cmm_push_content_type bwf_cmm_push_content_type) {
 
-        TestPushApp note8 =
+
+
+//        TestPushApp m20 =
+//                new TestPushApp(
+//                        "diUW4C9AGew:APA91bG9zDOfEKAaI2mgTQXYKab6o2HTJ5QjuVK-Rr_srVkvW9Hs4beUozjp6JmcdZwurJ3xRclE2avzsOKzzMa0OOlm7Qnh_iz9ghZJiAXmfd0iUIUfdfcM7NIsceA2ZV2IKlmi0y9U"
+//                        , s
+//                        , s1);// to make a call to sam sung note 8
+//        m20.Execute();
+//        Log.d("bwf_cmm_didStartWithIdentifier    ",  s );
+//        Log.d("bwf_cmm_didStartWithIdentifier    ",  s1 );
+//
+
+
+        TestPushApp a50 =
                 new TestPushApp(
-                        ""
+                        "c4OLE32rD_s:APA91bE4uG_QbxfLU6z1f7GLAsl3MkBBpoLWPMUWVls_9Ai25e_uf2Itv-V3qLZVLhB4Koxf6P933KGHvDDsEpG8XIuc-B92ME3i7nKQxd37jraiGf5s4dUz7VywxMTOznACWCCaLKlj"
                         , s
                         , s1);// to make a call to sam sung note 8
-        note8.Execute();
-        Log.d("bwf_cmm_didStartWithIdentifier    ",  s );
-        Log.d("bwf_cmm_didStartWithIdentifier    ",  s1 );
+        a50.Execute();
+
+
 
 
     }
@@ -183,10 +198,6 @@ public class MainActivity extends AppCompatActivity implements BWF_CMM_Protocol,
 
     }
 
-    @Override
-    public void bwf_cmm_generatePushContent(String s, String s1) {
-
-    }
 
     @Override
     public void DisplayString(String s) {
